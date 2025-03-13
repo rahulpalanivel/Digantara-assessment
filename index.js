@@ -7,6 +7,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+//To establish database connection
 connectdb();
 
 app.use("/api/algorithm", algorithmRoute);

@@ -11,6 +11,6 @@ const {
 router.post("/binarySearch", binarySearchFunction);
 router.post("/quickSort", quickSortFunction);
 router.post("/breadthFirstSearch", breadthFirstSearchFunction);
-router.get("/algorithmLogs", algorithmLogs);
+router.get("/logs", algorithmLogs);
 
 module.exports = router;
