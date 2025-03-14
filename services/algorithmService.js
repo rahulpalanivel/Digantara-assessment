@@ -38,8 +38,28 @@ const quickSort = (array) => {
   return [...quickSort(leftArray), pivot, ...quickSort(rightArray)];
 };
 
-const breadthFirstSearch = () => {
-  return 3;
+const breadthFirstSearch = (graph, startNode) => {
+  let visited = new Set();
+  let queue = [startNode];
+  let result = [];
+
+  visited.add(startNode);
+
+  while (queue.length > 0) {
+    let currentNode = queue.shift();
+    result.push(currentNode);
+
+    if (graph[currentNode]) {
+      for (let neighbor of graph[currentNode]) {
+        if (!visited.has(neighbor)) {
+          visited.add(neighbor);
+          queue.push(neighbor);
+        }
+      }
+    }
+  }
+
+  return result;
 };
 
 module.exports = { binarySearch, quickSort, breadthFirstSearch };

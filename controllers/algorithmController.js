@@ -87,9 +87,32 @@ const quickSortFunction = async (req, res) => {
   }
 };
 
-const breadthFirstSearchFunction = () => {
+const breadthFirstSearchFunction = (req, res) => {
   try {
-    const result = breadthFirstSearch();
+    const { array, number } = req.body;
+
+    //To check if inputs are not empty
+    if (!array || !number) {
+      return res.status(400).json({ error: "body not def error" });
+    }
+
+    //To check if inputs are of correct datatypes
+    if (!(typeof number === "number")) {
+      return res.status(400).json({ error: "number error" });
+    }
+
+    //To check if array is not empty
+    if (array.length <= 0) {
+      return res.status(400).json({ error: "number null" });
+    }
+
+    //To check if array contains only numbers
+    // if (!array.every((num) => typeof num === "object")) {
+    //   return res.status(400).json({ error: "not all nums" });
+    // }
+
+    const result = breadthFirstSearch(array, number);
+
     return res.status(200).json({ found: result });
   } catch (err) {
     return res.status(400).json({ error: err });

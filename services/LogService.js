@@ -10,7 +10,8 @@ const addnewLog = async (algorithmName, inputData, outputData) => {
   await log.save();
 };
 
-const getLog = async () => {};
+//Gets log by name
+const getLog = async (algorithmName) => {};
 
 //Gets all logs
 const getAllLogs = async () => {
