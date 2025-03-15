@@ -11,7 +11,19 @@ const addnewLog = async (algorithmName, inputData, outputData) => {
 };
 
 //Gets log by name
-const getLog = async (algorithmName) => {};
+const getLog = async (algorithmName) => {
+  const allLogs = [];
+  const logs = await Log.find({ Algorithm_Name: algorithmName });
+  logs.forEach((element) => {
+    const log = {
+      "Algorithm Name": element.Algorithm_Name,
+      "Input Data": element.Input_Data,
+      "Output Data": element.Output_Data,
+    };
+    allLogs.push(log);
+  });
+  return allLogs;
+};
 
 //Gets all logs
 const getAllLogs = async () => {
