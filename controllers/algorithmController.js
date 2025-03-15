@@ -7,6 +7,7 @@ const {
 const { addnewLog, getLog, getAllLogs } = require("../services/LogService");
 
 const displayError = require("../middleware/displayError");
+const displayOutput = require("../middleware/displayOutput");
 
 const binarySearchFunction = async (req, res, next) => {
   try {
@@ -19,17 +20,17 @@ const binarySearchFunction = async (req, res, next) => {
 
     //To check if inputs are of correct datatypes
     if (!Array.isArray(array) || !(typeof number === "number")) {
-      return next(new Error("Inputs are not of correct datatype"));
+      return next(displayError(400, "Inputs are not of correct datatype"));
     }
 
     //To check if array is not empty
     if (array.length <= 0) {
-      return next(new Error("Array is empty"));
+      return next(displayError(400, "Array is empty"));
     }
 
     //To check if array contains only numbers
     if (!array.every((num) => typeof num === "number")) {
-      return next(new Error("Array should contain only numbers"));
+      return next(displayError(400, "Array should contain only numbers"));
     }
 
     //To check if array is sorted
@@ -38,7 +39,7 @@ const binarySearchFunction = async (req, res, next) => {
         (value, index, arr) => index === 0 || value >= arr[index - 1]
       )
     ) {
-      return next(new Error("Array is not sorted"));
+      return next(displayError(400, "Array is not sorted"));
     }
 
     //Perform binary Search
@@ -47,34 +48,34 @@ const binarySearchFunction = async (req, res, next) => {
     //create a new log and save it to database
     addnewLog("Binary Search", { array, number }, result);
 
-    return res.status(200).json({ index: result });
+    displayOutput(res, 200, result);
   } catch (err) {
-    next(err);
+    next(displayError(err.status, err.message));
   }
 };
 
-const quickSortFunction = async (req, res) => {
+const quickSortFunction = async (req, res, next) => {
   try {
     const { array } = req.body;
 
     //To check if inputs are not empty
     if (!array) {
-      return res.status(400).json({ error: "body not def error" });
+      return next(displayError(400, "Inputs are Empty"));
     }
 
     //To check if inputs are of correct datatypes
     if (!Array.isArray(array)) {
-      return res.status(400).json({ error: "number error" });
+      return next(displayError(400, "Inputs are not of correct datatype"));
     }
 
     //To check if array is not empty
     if (array.length <= 0) {
-      return res.status(400).json({ error: "number null" });
+      return next(displayError(400, "Array is empty"));
     }
 
     //To check if array contains only numbers
     if (!array.every((num) => typeof num === "number")) {
-      return res.status(400).json({ error: "not all nums" });
+      return next(displayError(400, "Array should contain only numbers"));
     }
 
     //Performs quick sort
@@ -83,50 +84,56 @@ const quickSortFunction = async (req, res) => {
     //create a new log and save it to database
     addnewLog("Quick Sort", array, result);
 
-    return res.status(200).json({ sortedArray: result });
+    displayOutput(res, 200, result);
   } catch (err) {
-    return res.status(400).json({ error: err });
+    next(displayError(err.status, err.message));
   }
 };
 
-const breadthFirstSearchFunction = (req, res) => {
+const breadthFirstSearchFunction = (req, res, next) => {
   try {
     const { array, number } = req.body;
 
     //To check if inputs are not empty
     if (!array || !number) {
-      return res.status(400).json({ error: "body not def error" });
+      return next(displayError(400, "Inputs are Empty"));
     }
 
     //To check if inputs are of correct datatypes
     if (!(typeof number === "number")) {
-      return res.status(400).json({ error: "number error" });
+      return next(displayError(400, "Inputs are not of correct datatype"));
     }
 
     const result = breadthFirstSearch(array, number);
 
-    return res.status(200).json({ found: result });
+    //create a new log and save it to database
+    addnewLog("Breath First Search", { array, number }, result);
+
+    displayOutput(res, 200, result);
   } catch (err) {
-    return res.status(400).json({ error: err });
+    next(displayError(err.status, err.message));
   }
 };
 
-const algorithmLogs = async (req, res) => {
+const algorithmLogs = async (req, res, next) => {
   try {
     const { algorithmName } = req.query;
     var logs;
     //Gets all logs from database
     if (algorithmName) {
+      //Gets logs by name
       logs = await getLog(algorithmName);
     } else {
+      //Gets all logs
       logs = await getAllLogs();
     }
-
-    if (!logs) {
+    if (logs.length === 0) {
+      next(displayError(404, "Log not found"));
+    } else {
+      displayOutput(res, 200, logs);
     }
-    return res.status(200).json({ Logs: logs });
   } catch (err) {
-    return res.status(400).json({ error: err });
+    next(displayError(err.status, err.message));
   }
 };
 
