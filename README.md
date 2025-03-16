@@ -63,7 +63,7 @@ Ensure you have the following installed:
 
 1. **Binary Search:**
 
-   - Endpoint:
+   - Endpoint: (POST)
      
    ```bash
    /api/algorithm/binarySearch
@@ -81,7 +81,7 @@ Ensure you have the following installed:
       
 2. **Quick Sort:**
 
-   - Endpoint:
+   - Endpoint: (POST)
      
    ```bash
    /api/algorithm/quickSort
@@ -97,7 +97,7 @@ Ensure you have the following installed:
    
 3. **Breath First Search:**
 
-   - Endpoint:
+   - Endpoint: (POST)
      
    ```bash
    /api/algorithm/breadthFirstSearch
@@ -112,4 +112,20 @@ Ensure you have the following installed:
    }
    ```
 
-Note: please ensure the correct names are used for the inputs i.e (array, number).
+4. **All Logs**
+
+   - Endpoint: (GET)
+  
+   ```bash
+   /api/algorithm/logs
+   ```
+
+5. **Algorithm Specific Log**
+
+   - Endpoint: (GET)
+  
+   ```bash
+   /api/algorithm/logs?algorithmName={Name of the algorithm(Binary Search, Quick Sort, Breath First Search)}
+   ```
+
+Note: please ensure the correct names are used for the inputs i.e (array, number, Binary Search).
