@@ -7,6 +7,7 @@
 - Implemented Error Handling techniques inorder to manage exceptions or invalid inputs. 
 - Method of inputs are via HTTP requests and outputs are of clear structured HTTP response.
 - Added Tests to ensure the server provides the desired outputs.
+- Deployed the server on Render which can be accessed via: https://digantara-assessment.onrender.com/.
 
 
 ## Tech Stack
@@ -129,3 +130,11 @@ Ensure you have the following installed:
    ```
 
 Note: please ensure the correct names are used for the inputs i.e (array, number, Binary Search).
+
+## Deployment
+The backend server has also been deployed on Render.com, you can make use of the above endpoints to call the API.
+
+   ```bash
+   https://digantara-assessment.onrender.com
+   ```
+Note: Since the server is deployed on a free instance, it will spin-down incase of prolonged inactivity, and if a request is made after that it would take a few minutes to bring the instance back up.
