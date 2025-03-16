@@ -23,3 +23,5 @@ app.use(invalidRoutes);
 app.use(errorHandler);
 
 app.listen(Port, () => console.log("Server running on port 8080"));
+
+module.exports = app;
