@@ -1,3 +1,5 @@
+# Digantara-assessment
+
 ## Summary
 - Designed and Developed API's to perform Binary Search, Quick Sort and Breath First Search.
 - Added logging functions which stores the previous called API's in a MongoDB database.
@@ -51,3 +53,63 @@ Ensure you have the following installed:
    ```bash
    npm start
    ```
+
+## Accessing the API's
+- You can use Postman or thunder client (VS code extentions) or any other API testing tool of ypur choice to call the API.
+
+## Input Format
+
+
+
+1. **Binary Search:**
+
+   - Endpoint:
+     
+   ```bash
+   /api/algorithm/binarySearch
+   ```
+
+   - Input Format:
+
+   ```bash
+   {
+     "array":[1, 2, 3, 4, 5],
+     "number": 1
+   }
+   ```
+   
+      
+2. **Quick Sort:**
+
+   - Endpoint:
+     
+   ```bash
+   /api/algorithm/quickSort
+   ```
+
+   - Input Format:
+
+   ```bash
+   {
+     "array":[5, 4, 3, 2, 1]
+   }
+   ```
+   
+3. **Breath First Search:**
+
+   - Endpoint:
+     
+   ```bash
+   /api/algorithm/breadthFirstSearch
+   ```
+
+   - Input Format:
+
+   ```bash
+   {
+     "array":{"1":[2, 3], "2":[1], "3":[1]},
+     "number": 3
+   }
+   ```
+
+Note: please ensure the correct names are used for the inputs i.e (array, number).
