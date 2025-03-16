@@ -1,12 +1,17 @@
-## Features
-
+## Summary
+- Designed and Developed API's to perform Binary Search, Quick Sort and Breath First Search.
+- Added logging functions which stores the previous called API's in a MongoDB database.
+- Added functions to retrieve all logs or specific logs by algorithm name.
+- Implemented Error Handling techniques inorder to manage exceptions or invalid inputs. 
+- Method of inputs are via HTTP requests and outputs are of clear structured HTTP response.
+- Added Tests to ensure the server provides the desired outputs.
 
 
 ## Tech Stack
 
 **Language:** JavaScript
 
-**Backend:** Express, Node
+**Framework:** Express, Node
 
 **Database:** MongoDB
 
@@ -15,14 +20,13 @@
 Ensure you have the following installed:
 
 - [Node.js](https://nodejs.org/)
-- [MongoDB](https://www.mongodb.com/try/download/community)
 
 ## Getting Started
 
 1. **Clone the repository:**
 
    ```bash
-   [https://github.com/rahulpalanivel/servereats.git](https://github.com/rahulpalanivel/Digantara-assessment.git)
+   https://github.com/rahulpalanivel/Digantara-assessment.git
    ```
 
 2. **Navigate to the project directory:**
@@ -38,13 +42,12 @@ Ensure you have the following installed:
    ```
 
 4. **Set up Database:**
-   - (You can ignore this step if you want to use existing database)
+   - (You can ignore this step if you want to use existing database which is hard-coded within the project)
    - Create a MongoDB database.
-   - Add a MongoDB connection string in an env file in server
+   - Add a MongoDB connection string in the dbconnection file.
 
 5. **Start Backend:**
 
    ```bash
-   cd Digantara_Assessment
    npm start
    ```
