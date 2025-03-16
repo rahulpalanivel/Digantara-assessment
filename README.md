@@ -7,7 +7,7 @@
 - Implemented Error Handling techniques inorder to manage exceptions or invalid inputs. 
 - Method of inputs are via HTTP requests and outputs are of clear structured HTTP response.
 - Added Tests to ensure the server provides the desired outputs.
-- Deployed the server on Render which can be accessed via: https://digantara-assessment.onrender.com/.
+- Deployed the server on Render which can be accessed via: [Server Link](https://digantara-assessment.onrender.com/).
 
 
 ## Tech Stack
