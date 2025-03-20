@@ -56,7 +56,7 @@ Ensure you have the following installed:
    ```
 
 ## Accessing the API's
-- You can use Postman or thunder client (VS code extentions) or any other API testing tool of ypur choice to call the API.
+- You can use Postman or thunder client (VS code extentions) or any other API testing tool of your choice to call the API.
 
 ## Input Format
 
